@@ -1,0 +1,14 @@
+#register{
+  width:430px;
+  display: inline-block;
+}
+#login{
+  width:300px;
+  display: inline-block;
+  vertical-align: top;
+}
+#container{
+  width:900px;
+  height: 800px;
+
+}

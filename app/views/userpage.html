@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User's Page</title>
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css">
+</head>
+<body>
+<div id="container">
+<p id="header"><a href="/logout">Logout</a></p>
+<h1>Welcome, {{session['name']}} !</h1>
+{% for total in total_poked %}
+<p> {{total['total']}} people porked you!</p>
+{% endfor %}
+<div id="leftbox">
+{% for poke in pokes %}
+	<p>{{poke['name']}} poked you {{poke['total']}} times</p>
+{% endfor %}
+</div>
+<p>People You may want to poke : </p>
+<div id="rightbox">
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Alias</th>
+      <th>Email Address</th>
+      <th>Poke History</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+   <tbody>
+   {% for info in infos %}
+   {% if info['id'] != session['id'] %}
+    <tr>
+      <td>{{info['id']}}</td>
+      <td id="name">{{info['name']}}</td>
+      <td>{{info['alias']}}</td>
+      <td id="email">{{info['email']}}</td>
+      <td id="poke">{{info['total']}}</td>
+      <td><a href="/addpoke/{{ info['id'] }}/{{session['id'] }}"><button>Poke!</button></a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</html>
